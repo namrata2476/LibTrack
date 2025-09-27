@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: libtrack
+      MYSQL_USER: libuser
+      MYSQL_PASSWORD: libpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  server:
+    build: ./server
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: libtrack
+      DB_USER: libuser
+      DB_PASS: libpass
+      PORT: 4000
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+
+  client:
+    build: ./client
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+
+volumes:
+  db_data:
