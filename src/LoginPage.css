@@ -1,0 +1,168 @@
+/* Base styles for the entire page */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+}
+
+/* Dark mode specific styles for body */
+body.dark-mode {
+    background-color: #2c2c2c;
+    color: #f0f0f0;
+}
+
+/* --- Login Page Wrapper (The Background) --- */
+.login-page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* ⚠️ The path to your local image in the 'public' folder */
+    background-image: url('../public/book-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; /* For the toggle button positioning */
+    padding: 20px; /* Add some padding on smaller screens */
+    box-sizing: border-box;
+}
+
+/* The Semi-Transparent Overlay (For text readability) */
+.login-page-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45); /* Light Mode: Darker overlay */
+    backdrop-filter: blur(3px); /* Subtle blur for aesthetic */
+    z-index: 1;
+    transition: background 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+/* Dark mode specific overlay */
+.login-page-wrapper.dark-mode::before {
+    background: rgba(0, 0, 0, 0.65); /* Dark Mode: Even darker overlay */
+}
+
+/* --- Login Card (The Content Box) --- */
+.login-card {
+    background: rgba(255, 255, 255, 0.95); /* Semi-transparent white card */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    z-index: 2; /* Bring card above overlay */
+    transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Dark mode specific card styles */
+.login-page-wrapper.dark-mode .login-card {
+    background: rgba(35, 35, 35, 0.95); /* Darker semi-transparent card */
+    color: #f0f0f0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+}
+
+.login-card h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.login-page-wrapper.dark-mode .login-card h1 {
+    color: #e0e0e0;
+}
+
+/* --- Google Sign-in Button Styles --- */
+.google-signin-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #4285F4; /* Google blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.google-signin-button:hover {
+    background-color: #357ae8;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.google-logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    background-color: white; /* Ensures logo background is white */
+    padding: 2px;
+    border-radius: 2px;
+}
+
+/* --- Restriction Note and Message Styles --- */
+.restriction-note {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 25px;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.login-page-wrapper.dark-mode .restriction-note {
+    color: #ccc;
+}
+
+.status-message {
+    margin-top: 20px;
+    color: #007bff; /* A neutral info color */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* --- Theme Toggle Button --- */
+.theme-toggle-button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 3; /* Above everything */
+    transition: all 0.3s ease;
+    
+    /* Light Mode Default Style */
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle-button:hover {
+    background-color: rgba(240, 240, 240, 0.9);
+    transform: translateY(-2px);
+}
+
+/* Dark Mode Button Style */
+.login-page-wrapper.dark-mode .theme-toggle-button {
+    background-color: rgba(50, 50, 50, 0.9);
+    color: #f0f0f0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.login-page-wrapper.dark-mode .theme-toggle-button:hover {
+    background-color: rgba(20, 20, 20, 0.8);
+}
