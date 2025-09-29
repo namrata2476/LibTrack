@@ -40,13 +40,16 @@ function LoginPage() {
       <div className="login-card">
         <h1>KIIT LibTrack</h1>
         
-        {/* Google Sign-In Button */}
+        {/* App logo at top */}
+        <img src="/logo.png" alt="App logo" className="app-logo" />
+
+        {/* Google Sign-In Button (restored icon) */}
         <button 
           className="google-signin-button" 
           onClick={handleGoogleSignIn}
         >
           <img 
-            src="/google-logo.png" /* Placeholder for Google logo */
+            src="https://developers.google.com/identity/images/g-logo.png"
             alt="Google logo" 
             className="google-logo" 
           />

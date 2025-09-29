@@ -17,8 +17,8 @@ body.dark-mode {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* ⚠️ The path to your local image in the 'public' folder */
-    background-image: url('../public/book-bg.jpg'); 
+    /* Use local bundled asset for background */
+    background-image: url('./assets/background.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -109,6 +109,12 @@ body.dark-mode {
     background-color: white; /* Ensures logo background is white */
     padding: 2px;
     border-radius: 2px;
+}
+
+.app-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
 }
 
 /* --- Restriction Note and Message Styles --- */
